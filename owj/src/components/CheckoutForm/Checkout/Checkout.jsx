@@ -11,13 +11,14 @@ const steps = ['Shipping Address', 'Payment Details']
 const Checkout = ({ cart }) => {
     const [activeStep, setActiveStep] = useState(0);
     const [checkoutToken, setCheckoutToken] = useState(null);
+    const [shippingData, setShippingData] = useState({});
     const classes = useStyles();
 
     useEffect(() => {
         const generateToken = async () => {
             try {
                 const token = await commerce.checkout.generateToken(cart.id, { type: 'cart' });
-                console.log(token)
+                
                 setCheckoutToken(token)
             } catch (error) {
 
@@ -33,12 +34,20 @@ const Checkout = ({ cart }) => {
         </div>
     )
 
+    const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1)
+    const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1)
+
+    const next = (data) =>{ 
+        setShippingData(data);
+        nextStep();
+    }
+
     const Form = () => activeStep === 0 
-        ? <AddressForm checkoutToken={checkoutToken} />
-        : <PaymentForm />
+        ? <AddressForm checkoutToken={checkoutToken} next={next} />
+        : <PaymentForm shippingData={shippingData} checkoutToken={checkoutToken} backStep={backStep}/>
 
     return (
-        <>
+        <div>
             <div className={classes.toolbar} />
             <main className={classes.layout}>
                 <Paper className={classes.Paper}>
@@ -53,7 +62,7 @@ const Checkout = ({ cart }) => {
                     { activeStep === steps.length ? <Confirmation /> : checkoutToken && <Form />}
                 </Paper>
             </main>  
-        </>
+        </div>
     )
 }
 

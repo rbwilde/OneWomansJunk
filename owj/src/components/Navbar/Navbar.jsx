@@ -1,3 +1,4 @@
+import React from 'react'
 import{ AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
 import {Link } from 'react-router-dom'
@@ -9,7 +10,7 @@ const Navbar = ({ totalItems }) => {
 
     const classes = useStyles();
     return (
-        <>
+        <div>
           <AppBar position="fixed" className={classes.appBar} color="inherit" />  
             <Toolbar>
                 <Typography variant="h6" className={classes.title} color="inherit" >
@@ -24,7 +25,7 @@ const Navbar = ({ totalItems }) => {
                         </Badge>
                     </IconButton>
             </Toolbar>
-        </>
+        </div>
     )
 }
 
