@@ -21,4 +21,4 @@ const Review = ({ checkoutToken }) => (
   </React.Fragment>
 );
 
-export default Review;
+export default Review
