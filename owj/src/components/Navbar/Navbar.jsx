@@ -4,7 +4,7 @@ import { ShoppingCart } from '@material-ui/icons';
 import { Link, useLocation } from 'react-router-dom';
 
 import logo from '../../assets/owj-logo-light.png';
-import AuthNav from "./AuthNav.jsx";
+// import AuthNav from "./AuthNav.jsx";
 import useStyles from './styles';
 
 const PrimarySearchAppBar = ({ totalItems }) => {
@@ -46,7 +46,6 @@ const PrimarySearchAppBar = ({ totalItems }) => {
                 <ShoppingCart />
               </Badge>
             </IconButton>
-            <AuthNav />
           </div>
           )}
         </Toolbar>
