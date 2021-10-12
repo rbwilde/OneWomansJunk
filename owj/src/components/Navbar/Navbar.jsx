@@ -3,7 +3,8 @@ import { AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography } from '
 import { ShoppingCart } from '@material-ui/icons';
 import { Link, useLocation } from 'react-router-dom';
 
-import logo from '../../assets/owj-logo-teal.png';
+import logo from '../../assets/owj-logo-light.png';
+import AuthNav from "./AuthNav.jsx";
 import useStyles from './styles';
 
 const PrimarySearchAppBar = ({ totalItems }) => {
@@ -35,7 +36,7 @@ const PrimarySearchAppBar = ({ totalItems }) => {
       <AppBar position="fixed" className={classes.appBar} color="inherit">
         <Toolbar>
           <Typography component={Link} to="/" variant="h6" className={classes.title} color="inherit">
-            <img src={logo} alt="commerce.js" height="25px" className={classes.image} /> Commerce.js
+            <img src={logo} alt="commerce.js" height="25px" className={classes.image} /> One Woman's Junk
           </Typography>
           <div className={classes.grow} />
           {location.pathname === '/' && (
@@ -45,6 +46,7 @@ const PrimarySearchAppBar = ({ totalItems }) => {
                 <ShoppingCart />
               </Badge>
             </IconButton>
+            <AuthNav />
           </div>
           )}
         </Toolbar>
